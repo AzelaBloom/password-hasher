@@ -76,11 +76,7 @@ $vhash = filter_var(isset($_GET['vhash']) ? $_GET['vhash'] : null, FILTER_SANITI
 if($type == "hash"){
     $password_plain = $_POST['password_plain'];
     $salt = $_POST['salt'];
-    if($salt){
-        $password_result = hHash($password_plain, $salt);
-    }else{
-        $password_result = hHash($password_plain);
-    }
+    $password_result = ($salt) ? hHash($password_plain, $salt) : hHash($password_plain);
     header("LOCATION:index.php?resultHash=$password_result&plain=$password_plain&salt=$salt");
 }
 
