@@ -5,56 +5,63 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <title>Hash.php</title>
   </head>
   <body>
-    <center><h1>Password Hasher</h1></center>
+    <center>
+      <h1>Password Hasher</h1>
+    </center>
     <br>
     <br>
     <div class="container">
-    <div class="row">
-    <div class="col-md-6">
-    <h2> HASH PASSWORD </h2>
-    <form method="POST">
-    <input name="type" value="hash" type="hidden">
-    <label> YOUR PLAIN PASSWORD </label>
-    <input class="form-control" name="password_plain" type="text" placeholder="PLAIN PASSWORD" value="<?= $plain ?>" required>
-    <br>
-    <label> SALT (OPTIONAL) </label>
-    <input class="form-control" name="salt" type="text" placeholder="YOUR SALT" value="<?= $salt ?>">
-    <br>
-    <button type="submit" class="btn btn-success btn-block"> HASH NOW </button>
-    </form>
-    <br>
-    <br>
-    <h3> YOUR HASH RESULT <h3>
-    <input readonly class="form-control" value="<?= $resultHash ?>">
-    </div>
-    <div class="col-md-6">
-    <h2> VERIFY PASSWORD </h2>
-    <form method="POST">
-    <input name="type" value="verify" type="hidden">
-    <label> YOUR PLAIN PASSWORD </label>
-    <input class="form-control" name="password_plain" type="text" placeholder="PLAIN PASSWORD" value="<?= $vplain ?>" required>
-    <br>
-    <label> YOUR HASH PASSWORD </label>
-    <input class="form-control" name="password_hash" type="text" placeholder="HASH PASSWORD" value="<?= $vhash ?>" required>
-    <br>
-    <label> SALT (OPTIONAL) </label>
-    <input class="form-control" name="salt" type="text" placeholder="YOUR SALT" value="<?= $vsalt ?>">
-    <br>
-    <button type="submit" class="btn btn-primary btn-block"> VERIFY NOW </button>
-    </form>
-    <br>
-    <br>
-    <h3> YOUR VERIFY RESULT <h3>
-    <input readonly class="form-control" value="<?= $resultVerify ?>">
-    </div>
-    </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2> HASH PASSWORD </h2>
+          <form method="POST">
+            <input name="type" value="hash" type="hidden">
+            <label> YOUR PLAIN PASSWORD </label>
+            <input class="form-control" name="password_plain" type="text" placeholder="PLAIN PASSWORD" value="
+													<?= $plain ?>" required>
+            <br>
+            <label> SALT (OPTIONAL) </label>
+            <input class="form-control" name="salt" type="text" placeholder="YOUR SALT" value="
+															<?= $salt ?>">
+            <br>
+            <button type="submit" class="btn btn-success btn-block"> HASH NOW </button>
+          </form>
+          <br>
+          <br>
+          <h3> YOUR HASH RESULT <h3>
+              <input readonly class="form-control" value="
+																				<?= $resultHash ?>">
+        </div>
+        <div class="col-md-6">
+          <h2> VERIFY PASSWORD </h2>
+          <form method="POST">
+            <input name="type" value="verify" type="hidden">
+            <label> YOUR PLAIN PASSWORD </label>
+            <input class="form-control" name="password_plain" type="text" placeholder="PLAIN PASSWORD" value="
+																							<?= $vplain ?>" required>
+            <br>
+            <label> YOUR HASH PASSWORD </label>
+            <input class="form-control" name="password_hash" type="text" placeholder="HASH PASSWORD" value="
+																									<?= $vhash ?>" required>
+            <br>
+            <label> SALT (OPTIONAL) </label>
+            <input class="form-control" name="salt" type="text" placeholder="YOUR SALT" value="
+																											<?= $vsalt ?>">
+            <br>
+            <button type="submit" class="btn btn-primary btn-block"> VERIFY NOW </button>
+          </form>
+          <br>
+          <br>
+          <h3> YOUR VERIFY RESULT <h3>
+              <input readonly class="form-control" value="
+																																<?= $resultVerify ?>">
+        </div>
+      </div>
     </div>
 
 
