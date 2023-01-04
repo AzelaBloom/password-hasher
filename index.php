@@ -60,46 +60,77 @@
 
 
       <?php
-require_once("hash.php");
-$type = filter_var(isset($_POST['type']) ? $_POST['type'] : null, FILTER_SANITIZE_STRING);
+require_once "hash.php";
+$type = filter_var(
+    isset($_POST["type"]) ? $_POST["type"] : null,
+    FILTER_SANITIZE_STRING
+);
 
+$resultHash = filter_var(
+    isset($_GET["resultHash"]) ? $_GET["resultHash"] : null,
+    FILTER_SANITIZE_STRING
+);
+$resultVerify = filter_var(
+    isset($_GET["resultVerify"]) ? $_GET["resultVerify"] : null,
+    FILTER_SANITIZE_STRING
+);
+$plain = filter_var(
+    isset($_GET["plain"]) ? $_GET["plain"] : null,
+    FILTER_SANITIZE_STRING
+);
+$salt = filter_var(
+    isset($_GET["salt"]) ? $_GET["salt"] : null,
+    FILTER_SANITIZE_STRING
+);
+$hash = filter_var(
+    isset($_GET["hash"]) ? $_GET["hash"] : null,
+    FILTER_SANITIZE_STRING
+);
+$vplain = filter_var(
+    isset($_GET["vplain"]) ? $_GET["vplain"] : null,
+    FILTER_SANITIZE_STRING
+);
+$vsalt = filter_var(
+    isset($_GET["vsalt"]) ? $_GET["vsalt"] : null,
+    FILTER_SANITIZE_STRING
+);
+$vhash = filter_var(
+    isset($_GET["vhash"]) ? $_GET["vhash"] : null,
+    FILTER_SANITIZE_STRING
+);
 
-$resultHash = filter_var(isset($_GET['resultHash']) ? $_GET['resultHash'] : null, FILTER_SANITIZE_STRING);
-$resultVerify = filter_var(isset($_GET['resultVerify']) ? $_GET['resultVerify'] : null, FILTER_SANITIZE_STRING);
-$plain = filter_var(isset($_GET['plain']) ? $_GET['plain'] : null, FILTER_SANITIZE_STRING);
-$salt = filter_var(isset($_GET['salt']) ? $_GET['salt'] : null, FILTER_SANITIZE_STRING);
-$hash = filter_var(isset($_GET['hash']) ? $_GET['hash'] : null, FILTER_SANITIZE_STRING);
-$vplain = filter_var(isset($_GET['vplain']) ? $_GET['vplain'] : null, FILTER_SANITIZE_STRING);
-$vsalt = filter_var(isset($_GET['vsalt']) ? $_GET['vsalt'] : null, FILTER_SANITIZE_STRING);
-$vhash = filter_var(isset($_GET['vhash']) ? $_GET['vhash'] : null, FILTER_SANITIZE_STRING);
-
-if($type == "hash"){
-    $password_plain = $_POST['password_plain'];
-    $salt = $_POST['salt'];
-    if($salt){
+if ($type == "hash") {
+    $password_plain = $_POST["password_plain"];
+    $salt = $_POST["salt"];
+    if ($salt) {
         $password_result = dsphVerify($password_plain, $password_hash, $salt);
-    }else{
+    } else {
         $password_result = dsphVerify($password_plain, $password_hash);
     }
-    header("LOCATION:index.php?resultHash=$password_result&plain=$password_plain&salt=$salt");
+    header(
+        "LOCATION:index.php?resultHash=$password_result&plain=$password_plain&salt=$salt"
+    );
 }
 
-if($type == "verify"){
-    $password_plain = $_POST['password_plain'];
-    $password_hash = $_POST['password_hash'];
-    $salt = $_POST['salt'];
-    if($salt){
+if ($type == "verify") {
+    $password_plain = $_POST["password_plain"];
+    $password_hash = $_POST["password_hash"];
+    $salt = $_POST["salt"];
+    if ($salt) {
         $password_result = hVerify($password_plain, $password_hash, $salt);
-    }else{
+    } else {
         $password_result = hVerify($password_plain, $password_hash);
     }
-    if($password_result == true){
-        header("LOCATION:index.php?resultVerify=TRUE&vplain=$password_plain&vhash=$password_hash&vsalt=$salt");
-    }else{
-        header("LOCATION:index.php?resultVerify=FALSE&vplain=$password_plain&vhash=$password_hash&vsalt=$salt");
+    if ($password_result == true) {
+        header(
+            "LOCATION:index.php?resultVerify=TRUE&vplain=$password_plain&vhash=$password_hash&vsalt=$salt"
+        );
+    } else {
+        header(
+            "LOCATION:index.php?resultVerify=FALSE&vplain=$password_plain&vhash=$password_hash&vsalt=$salt"
+        );
     }
 }
-
 
 ?>
 
